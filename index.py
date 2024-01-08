@@ -49,4 +49,4 @@ def scrape_videos():
     return json_data, 200, {'Content-Type': 'application/json'}
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=False)

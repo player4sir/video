@@ -1,15 +1,16 @@
 from flask import Flask, request, jsonify, abort
 from requests_html import HTMLSession, HTML
 from fake_useragent import UserAgent
+from flask_caching import Cache
 import json
 
 app = Flask(__name__)
 
 # 配置缓存
-# cache = Cache(app, config={'CACHE_TYPE': 'simple'})
+cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
 @app.route('/api')
-# @cache.cached(timeout=300)
+@cache.cached(timeout=300)
 def scrape_videos():
     page_number = request.args.get('num', default=1, type=int)
 

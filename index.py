@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify, abort
 from requests_html import HTMLSession, HTML
 from fake_useragent import UserAgent
-from flask_caching import Cache
 import json
 
 app = Flask(__name__)

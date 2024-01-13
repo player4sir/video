@@ -10,7 +10,7 @@ app = Flask(__name__)
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
 @app.route('/api')
-@cache.cached(timeout=300)
+@cache.cached(timeout=300, key_prefix=lambda: request.url)
 def scrape_videos():
     page_number = request.args.get('num', default=1, type=int)
 
